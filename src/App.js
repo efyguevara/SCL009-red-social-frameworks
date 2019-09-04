@@ -26,6 +26,7 @@ function App() {
           <Route exact path="/Wall" component={Wall} />
         </Switch>
       </BrowserRouter>
+      <Login />
     </>
   );
 }

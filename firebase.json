@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "petlovers",
     "public": "build",
     "ignore": [
       "firebase.json",
