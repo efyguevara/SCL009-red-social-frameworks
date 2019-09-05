@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowseeRouter, Switch, Route, Link } from 'react-router-dom';
-import { Navbar, Nav, FormControl, Button, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Navbar, Nav } from 'react-bootstrap';
 
 function MyNav() {
 

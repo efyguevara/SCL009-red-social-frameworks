@@ -7,11 +7,17 @@ import withFirebaseAuth from 'react-with-firebase-auth';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import firebaseConfig from '../initFirebase';
-
+// import Wall from './Wall';
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 class Login extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      user: false,
+    }
+  }
   render() {
     const { user, signOut, signInWithGoogle } = this.props;
     return (
@@ -32,7 +38,7 @@ class Login extends Component {
               <Col xs={12} md={12} lg={6}>
 
                 <Form.Group controlId="formBasicEmail">
-                  <Form.Label>Email address</Form.Label>
+                  <Form.Label>Email</Form.Label>
                   <Form.Control type="email" placeholder="Enter email" />
                   <Form.Text className="text-muted">
                     We'll never share your email with anyone else.  
@@ -46,6 +52,8 @@ class Login extends Component {
                 <Form.Group controlId="formBasicChecbox">
                   <Form.Check type="checkbox" label="Check me out" />
                 </Form.Group>
+                <Button>Entrar</Button>
+  
                 <div>
                   {
                     user ? <p>Hello, {user.displayName}</p>
@@ -53,7 +61,9 @@ class Login extends Component {
                   }
                   {
                     user ? <Button onClick={signOut}>Sign out</Button>
-                      : <Button onClick={signInWithGoogle}>Sign in with Google</Button>
+
+                    : <Button onClick={signInWithGoogle}>Sign in with Google</Button>
+                    
                   }
                 </div>
               </Col>

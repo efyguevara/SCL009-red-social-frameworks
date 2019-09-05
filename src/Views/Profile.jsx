@@ -1,13 +1,17 @@
 import React from 'react';
 // import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import '../App.css';
+import MyNav from '../Components/MyNav';
 
  
 function Profile() {
   return (
-    
-     <p>Profile</p>
-  
+    <>
+      <header className="">
+        <MyNav />
+      </header>
+      <p>Profile</p>
+    </>
   );
 }
 
