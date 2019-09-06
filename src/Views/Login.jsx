@@ -8,7 +8,7 @@ import withFirebaseAuth from 'react-with-firebase-auth';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import firebaseConfig from '../initFirebase';
-import Wall from './Wall';
+// import Wall from './Wall';
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
@@ -29,16 +29,6 @@ class Login extends Component {
     const { user, signOut, signInWithGoogle } = this.props;
     if (user) this.redirectWall()
     return (
-      // <div>
-      //   {
-      //     user ? <p>Hello, {user.displayName}</p>
-      //       : <p>Please, sign in</p>
-      //   }
-      //   {
-      //     user ? <Button onClick={signOut}>Sign out</Button>
-      //       : <Button onClick={signInWithGoogle}>Sign in with Google</Button>
-      //   }
-      // </div>
       <>
         <Container>
           <Form>
