@@ -20,20 +20,19 @@ class Login extends Component {
     }
   }
 
-  redirectWall(){
+  redirectWall() {
     return <Redirect to="/Wall" />
   }
 
   render() {
 
-    const { user, signOut, signInWithGoogle } = this.props;
+    const { user, signInWithGoogle } = this.props;
     if (user !== undefined) {
       this.setState({user:true})
         return (
           this.redirectWall()
       )
     }
-     
 
     console.log(user);
 
