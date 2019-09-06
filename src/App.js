@@ -11,7 +11,6 @@ function App() {
   return (
     <>
       <BrowserRouter>
-
         <div className="App">
         </div>
         <Switch>

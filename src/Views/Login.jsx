@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 // import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import '../App.css';
@@ -20,14 +20,23 @@ class Login extends Component {
     }
   }
 
-  redirectWall() {
-    return <Redirect to="/Wall"/>
+  redirectWall(){
+    return <Redirect to="/Wall" />
   }
 
   render() {
 
     const { user, signOut, signInWithGoogle } = this.props;
-    if (user) this.redirectWall()
+    if (user !== undefined) {
+      this.setState({user:true})
+        return (
+          this.redirectWall()
+      )
+    }
+     
+
+    console.log(user);
+
     return (
       <>
         <Container>
@@ -51,7 +60,6 @@ class Login extends Component {
                   <Form.Check type="checkbox" label="Check me out" />
                 </Form.Group>
                 <Button>Entrar</Button>
-
 
                 <Button onClick={signInWithGoogle}>Sign in with Google</Button>
 
