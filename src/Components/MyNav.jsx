@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
+// import {firebaseApp, auth} from '../initFirebase';
+import 'firebase/auth';
+// import * as firebase from 'firebase/app';
 
-function MyNav() {
+function MyNav(props) {
 
   return (
     <>
@@ -20,5 +23,6 @@ function MyNav() {
     </>
   )
 }
+
 
 export default MyNav;

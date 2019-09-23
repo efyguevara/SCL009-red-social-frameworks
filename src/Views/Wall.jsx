@@ -11,7 +11,7 @@ function Wall() {
       <header className="">
         <MyNav />
       </header>
-      <p>Wall</p>
+      <h1>Wall</h1>
     </>
   );
 }
