@@ -6,8 +6,8 @@ import Logout from './Views/Logout';
 import Signin from './Views/Signin';
 import Profile from './Views/Profile';
 import Wall from './Views/Wall';
-import * as firebase from 'firebase/app';
- 
+// import * as firebase from 'firebase/app';
+
 function App() {
   
   return (

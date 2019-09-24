@@ -1,36 +1,31 @@
-import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
+// import { Link, Redirect } from 'react-router-dom';
 import '../App.css';
 import * as firebase from 'firebase/app';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import MyNav from '../Components/MyNav';
 // import Login from './Login';
 
+
 function Signin() {
 
-  const createNewUser = (email, password) => {
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then(function () {
-        // const redirectLogin = () => {
-          return <Redirect to="/Login"></Redirect>
-        // }
-      })
-
-      .catch(function (error) {
-        // Handle Errors here.
-        // var errorCode = error.code;
-        // var errorMessage = error.message;
-        // ...
-      });
+const [email, setEmail] = useState=(false);
+const [password, setPassword] = useState = (false)
+  const createNewUser = () => {
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
+    });
   }
-
-  const redirectLogin = () => {
-    return <Link to="/Login"></Link>
-  }
+  // const redirectLogin = () => {
+  //   return <Link to="/Login"></Link>
+  // }                          
 
 
   return (
-    
+
     <>
       <MyNav />
 
@@ -60,8 +55,8 @@ function Signin() {
                 <Form.Control type="password" placeholder="Password" />
               </Form.Group>
 
-              <Button onClick={createNewUser}>Registrarme</Button>
-              <Button onClick={redirectLogin}>Volver atrás</Button>
+              <Button>Registrarme</Button>
+              <Button>Volver atrás</Button>
 
             </Col>
           </Row>

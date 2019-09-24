@@ -1,17 +1,65 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Redirect } from 'react-router-dom'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import '../App.css';
+import firebaseApp from '../initFirebase';
 import * as firebase from 'firebase/app';
-// import { firebaseApp } from '../initFirebase';
+import 'firebase/auth';
+import 'firebase/firestore'
+
 
 
 function Login() {
 
-// const auth = firebase.auth();
-  function redirectSignin() {
-    return <Redirect to="/Signin" />
+  // const auth = firebase.auth();
+  const observer = () => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        console.log(user)
+
+        console.log("Existe usuario activo");
+
+        let displayName = user.displayName;
+        let email = user.email;
+
+        let emailVerified = user.emailVerified;
+        console.log("*****************");
+        console.log(emailVerified);
+        console.log("*****************");
+
+        let photoUrl = user.photoURL;
+        let uid = user.uid;
+        let providerData = user.providerData;
+      }
+      else {
+        console.log("No existe usuario activo");
+        return <Redirect to="/Login" />;
+      }
+    });
   }
+
+  function googleLogin() {
+    let provider = firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider).then(function (result) {
+      console.log(result.user)
+      localStorage.setItem('user', JSON.stringify(result.user))
+      return result.user
+    })
+    .catch(function (error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      var email = error.email;
+      var credential = error.credential;
+      console.log("hay un error")
+    });
+  }
+
+
+
+  // function redirectSignin() {
+  //   observer();
+  //   return <Redirect to="/Signin" />
+  // }
   // function redirectWall() {
   //   return <Redirect to="/Wall" />
   // }
@@ -47,19 +95,18 @@ function Login() {
               <Form.Group controlId="formBasicChecbox">
                 <Form.Check type="checkbox" label="Check me out" />
               </Form.Group>
-              <Button >Entrar</Button>
+              <Button>Entrar</Button>
 
-              <Button >Ingresar con Google</Button>
+              <Button onClick={googleLogin}>Ingresar con Google</Button>
 
-{/* onClick={redirectSignin}onClick={redirectWall} */}
-              <Button onClick={redirectSignin}>Regístrate</Button>
+              <Button>Regístrate</Button>
 
             </Col>
           </Row>
         </Form>
       </Container>
     </>
-  );
+  )
 }
 // const firebaseAppAuth = firebaseApp.auth();
 // const providers = {
@@ -71,16 +118,7 @@ function Login() {
 // })(Login);
 
 export default Login;
-// import React, { Component } from 'react';
-// import { Redirect, HashRouter } from 'react-router-dom'
-// // import { BrowserRouter, Switch, Route } from 'react-router-dom';
-// import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
-// import '../App.css';
-// import withFirebaseAuth from 'react-with-firebase-auth';
-// import * as firebase from 'firebase/app';
-// import 'firebase/auth';
-// import { firebaseApp } from '../initFirebase';
-// import Signin from './Signin';
+
 
 
 // class Login extends Component {
